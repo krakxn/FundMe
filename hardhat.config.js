@@ -4,11 +4,6 @@ require("@nomiclabs/hardhat-etherscan")
 require("dotenv").config()
 require("solidity-coverage")
 require("hardhat-deploy")
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
 
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || ""
 const KOVAN_RPC_URL =
@@ -19,8 +14,12 @@ const RINKEBY_RPC_URL =
     "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
 const PRIVATE_KEY =
     process.env.PRIVATE_KEY ||
-    "0x11ee3108a03081fe260ecdc106554d09d9d1209bcafd46942b10e02943effc4a"
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
+    "9df97d6a425eb943d91b7d1ee202326cf74b0e5c2f0a185c61cb7873aa31d760"
+const ETHERSCAN_API_KEY =
+    process.env.ETHERSCAN_API_KEY || "6K1VHNQMNKAGRB5TVPISKY62V8SRN3Y7SR"
+const GOERLI_RPC_URL =
+    process.env.GOERLI_RPC_URL ||
+    "https://eth-goerli.g.alchemy.com/v2/6l5k5FkMVbhVJ5CLMrXMHaZH8dWgSIIe"
 
 module.exports = {
     defaultNetwork: "hardhat",
@@ -42,6 +41,13 @@ module.exports = {
             chainId: 4,
             blockConfirmations: 6,
         },
+        goerli: {
+            url: GOERLI_RPC_URL,
+            accounts: [PRIVATE_KEY],
+            chainId: 5,
+            blockConfirmations: 6,
+            gas: 6000000,
+        },
     },
     solidity: {
         compilers: [
@@ -57,7 +63,7 @@ module.exports = {
         apiKey: ETHERSCAN_API_KEY,
     },
     gasReporter: {
-        enabled: true,
+        enabled: false,
         currency: "USD",
         outputFile: "gas-report.txt",
         noColors: true,
