@@ -1,4 +1,4 @@
-const { LogDescription } = require("ethers/lib/utils")
+// const { LogDescription } = require("ethers/lib/utils") -- Redundant
 const { network } = require("hardhat")
 const {
     developmentChains,
