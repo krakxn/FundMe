@@ -1,6 +1,6 @@
 const { assert } = require("chai")
 const { deployments, ethers, getNamedAccounts } = require("hardhat")
-const { inputToConfig } = require("@ethereum-waffle/compiler")
+// const { inputToConfig } = require("@ethereum-waffle/compiler")
 
 describe("FundMe", function () {
     let fundMe
@@ -22,7 +22,7 @@ describe("FundMe", function () {
 
     describe("constructor", async function () {
         it("sets the aggregator addresses correctly", async function () {
-            const response = await fundMe.priceFeed()
+            const response = await fundMe.getPriceFeed()
             assert.equal(response, mockV3Aggregator.address)
         })
     })
